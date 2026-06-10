@@ -11,3 +11,8 @@
     -- Product -- ProductCategory
   - common
     -- Tag
+
+slug:
+
+- Bad: /post/12
+- Better: /post/django-architecture
