@@ -1,6 +1,6 @@
 from django.db import models
 from helpers.models.timestamp import TimeStampedModel
-from common.models import Tag
+from apps.common.models import Tag
 
 
 class ProductCategory(TimeStampedModel):
@@ -26,7 +26,7 @@ class Product(TimeStampedModel):
     )
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField()
-    
+
     def __str__(self):
         return self.title
     

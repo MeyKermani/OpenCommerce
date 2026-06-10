@@ -4,12 +4,12 @@ from apps.blog.models import Post
 
 class PostListView(ListView):
     model = Post
-    template_name = ""
+    template_name = "blog/post/list.html"
     context_object_name = "posts"
 
 class PostDetailView(DetailView):
     model = Post
-    template_name = ""
+    template_name = "blog/post/detail.html"
     context_object_name = "post"
     slug_field = 'slug'
     slug_url_kwarg = 'slug'    

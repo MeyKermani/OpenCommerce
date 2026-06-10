@@ -1,6 +1,6 @@
 from django.db import models
 from helpers.models.timestamp import TimeStampedModel
-from common.models import Tag
+from apps.common.models import Tag
 
 
 class PostCategory(TimeStampedModel):
