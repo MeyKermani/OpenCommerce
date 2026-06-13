@@ -1,0 +1,8 @@
+<h1>Post List</h1>
+{% for post in posts %}
+<p>
+  <a href="{% url 'blog:post_detail' post.slug %}">{{post.title}}</a>
+</p>
+{% empty %}
+<p>No posts found</p>
+{% endfor %}
