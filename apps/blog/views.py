@@ -8,7 +8,8 @@ class PostListView(ListView):
     context_object_name = "posts"
 
     def get_queryset(self):
-        return Post.objects.filter(status=PostStatus.PUBLISHED)
+       # return Post.objects.filter(status=PostStatus.PUBLISHED)
+        return Post.objects.published()
 
 class PostDetailView(DetailView):
     model = Post
