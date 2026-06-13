@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
-from apps.blog.models import Post
+from apps.blog.models import Post, PostStatus
 
 class PostListView(ListView):
     model = Post
     template_name = "blog/post/list.html"
     context_object_name = "posts"
+
+    def get_queryset(self):
+        return Post.objects.filter(status=PostStatus.PUBLISHED)
 
 class PostDetailView(DetailView):
     model = Post
