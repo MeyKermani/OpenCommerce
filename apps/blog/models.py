@@ -11,6 +11,10 @@ class PostCategory(TimeStampedModel):
     def __str__(self):
         return self.title
     
+class PostStatus(models.TextChoices):
+    DRAFT = 'draft', 'Draft'
+    PUBLISHED = 'published', 'Published'
+
 class Post(TimeStampedModel):
     title = models.CharField(max_length=120)
     slug = models.SlugField(unique=True)
@@ -25,6 +29,10 @@ class Post(TimeStampedModel):
         related_name="posts",
         blank=True
     )
-
+    status = models.CharField(
+        max_length=50,
+        choices=PostStatus.choices,
+        default=PostStatus.PUBLISHED
+    )
     def __str__(self):
         return self.title
