@@ -10,6 +10,12 @@ class ProductCategory(TimeStampedModel):
     def __str__(self):
         return self.title
     
+
+class ProductStatus(models.TextChoices):
+    ACTIVE = 'active', 'Active'
+    INACTIVE = 'inactive', 'Inactive'
+
+
 class Product(TimeStampedModel):
     title = models.CharField(max_length=120)
     slug = models.SlugField(unique=True)
@@ -26,7 +32,11 @@ class Product(TimeStampedModel):
     )
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField()
-
+    status = models.CharField(
+        max_length=50,
+        choices=ProductStatus.choices,
+        default= ProductStatus.ACTIVE 
+    )
     def __str__(self):
         return self.title
     
