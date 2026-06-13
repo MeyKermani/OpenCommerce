@@ -1,7 +1,7 @@
 <h1>Product List</h1>
 {% for product in products %}
 <p>
-  <a href="{% url 'shop:product_detail' product.slug %}">{{product.title}}</a>
+  <a href="{% url 'shop:product_detail' product.slug %}"> {{product.title}} </a>
 </p>
 {% empty %}
 <p>No products found</p>
