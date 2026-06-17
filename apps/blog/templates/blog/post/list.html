@@ -1,3 +1,5 @@
+{% extends 'common/base.html' %} {% block title %} Post List {% endblock %} 
+{% block content %}
 <h1>Post List</h1>
 {% for post in posts %}
 <p>
@@ -5,4 +7,4 @@
 </p>
 {% empty %}
 <p>No posts found</p>
-{% endfor %}
+{% endfor %} {% endblock %}

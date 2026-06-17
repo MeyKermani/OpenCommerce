@@ -1,9 +1,11 @@
+{% extends 'common/base.html' %} {% block title %} {{ post.title }} {% endblock %} 
+{% block content %}
 <h1>{{ post.title }}</h1>
 <p>{{ post.body }}</p>
 <p></p>
 <p>
   Category:
-  <a href="{% url 'blog:category_detail' post.category.slug %}"
-    >{{post.category}}</a
-  >
+  <a href="{% url 'blog:category_detail' post.category.slug %}">{{post.category}}</a>
 </p>
+{% endblock %}
+

@@ -1,6 +1,6 @@
-<html>
-  <head> </head>
-  <body>
+{% extends 'common/base.html' %} 
+{% block title %} Category: {{category.title}}{% endblock %} 
+{% block content %}
     <h1>Post Category: {{ category.title }}</h1>
     {% for post in posts %}
     <p>
@@ -12,5 +12,4 @@
     <p>
       <a href="{% url 'blog:post_list' %}">Back to posts</a>
     </p>
-  </body>
-</html>
+{% endblock %}
