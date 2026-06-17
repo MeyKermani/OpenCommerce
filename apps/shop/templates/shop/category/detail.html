@@ -1,0 +1,17 @@
+{% extends 'common/base.html' %}
+{% block title %} {{category.title}}{% endblock %}
+{% block content %}
+    <h1>
+        Category: {{category.title}}
+    </h1>
+    <h2>
+        Products
+    </h2>
+    {% for product in products %}
+    <p>
+        <a href="{% url 'shop:product_detail' product.slug %}">{{product.title}}</a>
+    </p>
+    {% empty %}
+     <p> No active products in category {{category.name}}</p>
+    {% endfor %}
+{% endblock %}

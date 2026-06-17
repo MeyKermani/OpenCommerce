@@ -16,3 +16,9 @@ slug:
 
 - Bad: /post/12
 - Better: /post/django-architecture
+
+
+
+
+
+- add categories list pages
