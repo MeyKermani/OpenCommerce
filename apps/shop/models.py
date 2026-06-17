@@ -1,6 +1,8 @@
 from django.db import models
 from helpers.models.timestamp import TimeStampedModel
 from apps.common.models import Tag
+from apps.shop.choices import ProductStatus
+from apps.shop.managers import ProductManager
 
 
 class ProductCategory(TimeStampedModel):
@@ -10,11 +12,6 @@ class ProductCategory(TimeStampedModel):
     def __str__(self):
         return self.title
     
-
-class ProductStatus(models.TextChoices):
-    ACTIVE = 'active', 'Active'
-    INACTIVE = 'inactive', 'Inactive'
-
 
 class Product(TimeStampedModel):
     title = models.CharField(max_length=120)
@@ -37,6 +34,8 @@ class Product(TimeStampedModel):
         choices=ProductStatus.choices,
         default= ProductStatus.ACTIVE 
     )
+    objects = ProductManager()
+
     def __str__(self):
         return self.title
     
