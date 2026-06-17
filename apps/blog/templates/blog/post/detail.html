@@ -1,3 +1,9 @@
 <h1>{{ post.title }}</h1>
 <p>{{ post.body }}</p>
-<p>Category: {{post.category}}</p>
+<p></p>
+<p>
+  Category:
+  <a href="{% url 'blog:category_detail' post.category.slug %}"
+    >{{post.category}}</a
+  >
+</p>
