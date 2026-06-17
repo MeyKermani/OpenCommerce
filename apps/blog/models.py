@@ -1,6 +1,9 @@
 from django.db import models
 from helpers.models.timestamp import TimeStampedModel
 from apps.common.models import Tag
+from apps.blog.choices import PostStatus
+from apps.blog.managers import PostManager
+
 
 class PostCategory(TimeStampedModel):
     title = models.CharField(max_length=120)
@@ -9,14 +12,8 @@ class PostCategory(TimeStampedModel):
 
     def __str__(self):
         return self.title
-    
-class PostManager(models.Manager):
-    def published(self):
-        return self.get_queryset().filter(status=PostStatus.PUBLISHED )
-        
-class PostStatus(models.TextChoices):
-    DRAFT = 'draft', 'Draft'
-    PUBLISHED = 'published', 'Published'
+         
+
 
 class Post(TimeStampedModel):
     title = models.CharField(max_length=120)
