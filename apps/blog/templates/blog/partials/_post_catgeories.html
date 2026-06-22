@@ -1,0 +1,10 @@
+<h3>Categories</h3>
+<ul>
+    {% for category in post_catgeories %}
+        <li>
+            <a href="{% url 'blog:category_detail' category.slug %}">
+            {{ category.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

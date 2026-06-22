@@ -1,4 +1,6 @@
-{% extends 'common/base.html' %} {% block title %} {{ post.title }} {% endblock %} 
+{% extends 'common/base.html' %}
+{% load blog_tags %}
+{% block title %} {{ post.title }} {% endblock %} 
 {% block content %}
 <h1>{{ post.title }}</h1>
 <p>{{ post.body }}</p>
@@ -7,5 +9,7 @@
   Category:
   <a href="{% url 'blog:category_detail' post.category.slug %}">{{post.category}}</a>
 </p>
+{% latest_posts 5 %}
+{% post_catgeories %}
 {% endblock %}
 
