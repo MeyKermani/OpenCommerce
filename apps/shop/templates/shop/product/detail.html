@@ -1,5 +1,7 @@
+{% load shop_filters %}
 <h1>{{ product.title }}</h1>
 <p>{{ product.description }}</p>
+<p>قیمت {{ product.price|to_toman }}</p>
 <p>Category: 
     <a href="{% url 'shop:category_detail' product.category.slug %}">
         {{product.category}}
