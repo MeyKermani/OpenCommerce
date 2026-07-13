@@ -3,7 +3,7 @@ from helpers.models.timestamp import TimeStampedModel
 from apps.common.models import Tag
 from apps.blog.choices import PostStatus
 from apps.blog.managers import PostManager
-
+from apps.accounts.models import UserProfile
 
 class PostCategory(TimeStampedModel):
     title = models.CharField(max_length=120)
@@ -37,3 +37,8 @@ class Post(TimeStampedModel):
     objects = PostManager()
     def __str__(self):
         return self.title
+    
+class Comment(TimeStampedModel):
+    text = models.TextField()
+    commenter = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    
