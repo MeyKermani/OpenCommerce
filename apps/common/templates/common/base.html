@@ -6,6 +6,7 @@
     {% if request.user.is_authenticated %}
     <div>
       <span>Hi {{request.user.username}}</span>
+      <span> My 
       <form action="{% url 'accounts:logout' %}" method="post" style="display:inline;">
         {% csrf_token %}
         <button type="submit">Logout</button>
@@ -13,6 +14,8 @@
     </div>
     {% else %}
     <span> <a href="{% url 'accounts:login' %}" >login</a></span>
+    <span> <a href="{% url 'accounts:signup' %}" >signup</a></span>
+
     {% endif %}
     {% block content %}{% endblock %}
   </body>
