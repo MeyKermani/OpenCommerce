@@ -20,3 +20,13 @@ class SignUpForm(UserCreationForm):
         )
 
         return user
+    
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name')
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('mobile_number',)
