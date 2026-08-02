@@ -41,4 +41,4 @@ class Post(TimeStampedModel):
 class Comment(TimeStampedModel):
     text = models.TextField()
     commenter = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='comments')
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments", null=True)
