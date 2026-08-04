@@ -4,7 +4,9 @@ from django.core.management.base import BaseCommand
 from django.core.validators import EmailValidator
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from django.db import transaction
 from django.contrib.auth.models import User
+from apps.accounts.models import UserProfile
 
 
 class Command(BaseCommand):
@@ -63,7 +65,30 @@ class Command(BaseCommand):
                 continue
 
             break
+        
+        # Mobile Number
+        # -------------------------
+        while True:
+            mobile_number = input("Mobile number: ").strip()
 
+            if not mobile_number:
+                self.stdout.write(
+                    self.style.ERROR("Mobile number cannot be empty.")
+                )
+                continue
+
+            if UserProfile.objects.filter(
+                mobile_number=mobile_number
+            ).exists():
+                self.stdout.write(
+                    self.style.ERROR(
+                        f'Mobile number "{mobile_number}" already exists.'
+                    )
+                )
+                continue
+
+            break
+        
         # Password
         # -------------------------
         while True:
@@ -103,15 +128,19 @@ class Command(BaseCommand):
 
         # Create User
         # -------------------------
-        user = User.objects.create_user(
-            username=username,
-            email=email,
-            password=password,
-        )
-
-        self.stdout.write("")
-        self.stdout.write(
-            self.style.SUCCESS(
-                f'User "{user.username}" created successfully.'
+        with transaction.atomic():
+            user = User.objects.create_user(
+                username=username,
+                email=email,
+                password=password,
             )
-        )
+            
+            user.userprofile.mobile_number = mobile_number
+            user.userprofile.save()
+
+            self.stdout.write("")
+            self.stdout.write(
+                self.style.SUCCESS(
+                    f'User "{user.username}" created successfully.'
+                )
+            )
