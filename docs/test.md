@@ -1,0 +1,3 @@
+in django we need to test parts of View or Models or ...
+the django test:
+django.test.TestCase

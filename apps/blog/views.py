@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from apps.blog.models import Post, PostCategory
+from django.http import HttpResponse
 
+
+def home(request):
+    return HttpResponse("Welcome to OpenCommerce")
 class PostListView(ListView):
     model = Post
     template_name = "blog/post/list.html"
