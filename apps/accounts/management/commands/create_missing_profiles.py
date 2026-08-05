@@ -4,8 +4,6 @@ from apps.accounts.models import UserProfile
 class Command(BaseCommand):
     help = "Create missing profiles for existing users"
 
-    created_profiles_count = 0
-    existing_profiles_count = 0
 
     def handle(self, *args, **options):
         created_profiles_count = 0
